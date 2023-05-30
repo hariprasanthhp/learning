@@ -12,7 +12,7 @@ sudo apt install wget -y
 #Download the repository using the below command:
 wget https://dev.mysql.com/get/mysql-apt-config_0.8.12-1_all.deb
 #Once downloaded, install the repository by running the command below:
-sudo dpkg -i mysql-apt-config_0.8.12-1_all.deb
+sudo dpkg -i mysql-apt-config_0.8.12-1_all.deb &&
 #Choose MySQL ubuntu focal if OS is not detected.
 #The next prompt shows MySQL 8.0 chosen by default. Choose the first option and click OK
 #In the next prompt, select MySQL 8.0 server and click OK.
@@ -23,15 +23,15 @@ sudo apt-get update
 sudo apt-cache policy mysql-server
 #Step #3: Install MySQL 5.7 on Ubuntu 22.04 LTS
 #Before Installing MySQL 5.7 you need to run this command:
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 467B942D3A79BD29
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 467B942D3A79BD29 &&
 #Update your system package:
 sudo apt update
 #we are going to install MySQL 5.7 client, MySQL 5.7 server with the below command:
-sudo apt install -f mysql-client=5.7* mysql-community-server=5.7* mysql-server=5.7*
+sudo apt install -f mysql-client=5.7* mysql-community-server=5.7* mysql-server=5.7* &&
 #Enter and re-enter root password:
 #Step #4: Secure MySQL 5.7 Installation on Ubuntu 22.04LTS:
 #Run the following commands
-sudo mysql_secure_installation
+sudo mysql_secure_installation &&
 #Provide the root password set above and you will have output like this:
 # Prompt for username and password
 read -p "Enter MySQL username: " usrnm
@@ -52,4 +52,4 @@ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
 #Save the file and restart mysql
 sudo systemctl restart mysql
 sudo systemctl status mysql
-
+sudo mysql -u $usrnm -p $passwd
